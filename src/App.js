@@ -30,9 +30,6 @@ import VideoDetails from "./components/core/ViewCourse/VideoDetails";
 import Instructor from "./components/core/Dashboard/InstructorDashboard/Instructor";
 
 function App() {
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   
   const { user } = useSelector((state) => state.profile)
 
