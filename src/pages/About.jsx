@@ -1,13 +1,7 @@
 import React from "react"
 
-import BannerImage1 from "../assets/Images/aboutus1.webp"
-import BannerImage2 from "../assets/Images/aboutus2.webp"
-import BannerImage3 from "../assets/Images/aboutus3.webp"
 // import Footer from "../components/common/Footer"
 import ContactFormSection from "../components/core/AboutPage/ContactFormSection"
-import LearningGrid from "../components/core/AboutPage/LearningGrid"
-import StatsComponenet from "../components/core/AboutPage/Stats"
-import HighlightText from "../components/core/HomePage/HighlightText"
 import Footer from "../components/common/Footer"
 
 const About = () => {
@@ -25,11 +19,6 @@ const About = () => {
             </p>
           </header>
           <div className="sm:h-[70px] lg:h-[150px]"></div>
-          {/* <div className="absolute bottom-0 left-[50%] grid w-[100%] translate-x-[-50%] translate-y-[30%] grid-cols-3 gap-3 lg:gap-5">
-            <img src={BannerImage1} alt="" />
-            <img src={BannerImage2} alt="" />
-            <img src={BannerImage3} alt="" />
-          </div> */}
         </div>
       </section>
 
@@ -42,12 +31,7 @@ const About = () => {
           </div>
         </div>
       </section>
-
-      
-
-      {/* <StatsComponenet /> */}
       <section className="mx-auto mt-20 flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-white">
-        {/* <LearningGrid /> */}
         <ContactFormSection />
       </section>
 
