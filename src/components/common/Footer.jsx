@@ -11,8 +11,6 @@ import { FaFacebook, FaGoogle, FaTwitter, FaYoutube } from "react-icons/fa";
 const BottomFooter = ["Privacy Policy", "Cookie Policy", "Terms"];
 const Resources = [
   "Articles",
-  "Blog",
-  "Code challenges",
   "Docs",
   "Projects",
   "Videos",
