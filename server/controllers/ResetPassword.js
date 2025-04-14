@@ -29,7 +29,7 @@ exports.resetPasswordToken = async (req, res) => {
 		);
 		console.log("DETAILS", updatedDetails);
         // create url
-		const url = `http://localhost:3000/update-password/${token}`;
+		const url = `https://studyvault-frontend.onrender.com/update-password/${token}`;
         // send mail to user containing url
 		await mailSender(
 			email,
