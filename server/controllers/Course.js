@@ -451,27 +451,31 @@ exports.deleteCourse = async (req, res) => {
     }
 
     // Unenroll students from the course
-    const studentsEnrolled = course.studentsEnroled
-    for (const studentId of studentsEnrolled) {
-      await User.findByIdAndUpdate(studentId, {
-        $pull: { courses: courseId },
-      })
+    const studentsEnrolled = course.studentsEnrolled || []
+    if (Array.isArray(studentsEnrolled)) {
+      for (const studentId of studentsEnrolled) {
+        await User.findByIdAndUpdate(studentId, {
+          $pull: { courses: courseId },
+        })
+      }
     }
 
     // Delete sections and sub-sections
-    const courseSections = course.courseContent
-    for (const sectionId of courseSections) {
-      // Delete sub-sections of the section
-      const section = await Section.findById(sectionId)
-      if (section) {
-        const subSections = section.subSection
-        for (const subSectionId of subSections) {
-          await SubSection.findByIdAndDelete(subSectionId)
+    const courseSections = course.courseContent || []
+    if (Array.isArray(courseSections)) {
+      for (const sectionId of courseSections) {
+        // Delete sub-sections of the section
+        const section = await Section.findById(sectionId)
+        if (section) {
+          const subSections = section.subSection || []
+          if (Array.isArray(subSections)) {
+            for (const subSectionId of subSections) {
+              await SubSection.findByIdAndDelete(subSectionId)
+            }
+          }
+          await Section.findByIdAndDelete(sectionId)
         }
       }
-
-      // Delete the section
-      await Section.findByIdAndDelete(sectionId)
     }
 
     // Delete the course

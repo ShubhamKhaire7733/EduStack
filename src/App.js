@@ -28,6 +28,7 @@ import CourseDetails from "./pages/CourseDetails";
 import ViewCourse from "./pages/ViewCourse";
 import VideoDetails from "./components/core/ViewCourse/VideoDetails";
 import Instructor from "./components/core/Dashboard/InstructorDashboard/Instructor";
+import AdminCourses from "./components/core/Dashboard/AdminCourses";
 
 function App() {
   
@@ -124,7 +125,14 @@ function App() {
           <Route path="dashboard/add-course" element={<AddCourse />} />
           <Route path="dashboard/my-courses" element={<MyCourses />} />
           <Route path="dashboard/edit-course/:courseId" element={<EditCourse />} />
-          
+          </>
+        )
+      }
+
+      {
+        user?.accountType === ACCOUNT_TYPE.ADMIN && (
+          <>
+          <Route path="dashboard/admin-courses" element={<AdminCourses />} />
           </>
         )
       }

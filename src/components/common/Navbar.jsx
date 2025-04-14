@@ -48,7 +48,7 @@ function Navbar() {
       <div className="flex w-11/12 max-w-maxContent items-center justify-between">
         {/* Logo */}
         <Link to="/">
-          <img src={logo} alt="Logo" width={160} height={32} loading="lazy" />
+          <img src={logo} alt="Logo" className="h-8 w-auto object-contain" loading="lazy" />
         </Link>
         {/* Navigation links */}
         <nav className="hidden md:block">

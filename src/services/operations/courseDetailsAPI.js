@@ -289,17 +289,18 @@ export const fetchInstructorCourses = async (token) => {
 export const deleteCourse = async (data, token) => {
   const toastId = toast.loading("Loading...")
   try {
-    const response = await apiConnector("DELETE", DELETE_COURSE_API, data, {
+    const response = await apiConnector("DELETE", DELETE_COURSE_API, { courseId: data.courseId }, {
       Authorization: `Bearer ${token}`,
     })
+    console.log("DELETE COURSE API DATA............", data)
     console.log("DELETE COURSE API RESPONSE............", response)
     if (!response?.data?.success) {
-      throw new Error("Could Not Delete Course")
+      throw new Error(response?.data?.message || "Could Not Delete Course")
     }
-    toast.success("Course Deleted")
+    toast.success("Course Deleted Successfully")
   } catch (error) {
-    console.log("DELETE COURSE API ERROR............", error)
-    toast.error(error.message)
+    console.log("DELETE COURSE API ERROR ............", error)
+    toast.error(error.response?.data?.message || "Failed to delete course")
   }
   toast.dismiss(toastId)
 }
